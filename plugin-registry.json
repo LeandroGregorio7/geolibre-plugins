@@ -26,7 +26,7 @@
     {
       "id": "geolibre-nasa-opera",
       "name": "NASA OPERA",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "description": "Search, visualize, and analyze NASA OPERA products with GeoAgent-assisted CMR search, titiler-cmr raster display, change detection, time-series statistics, report export, pixel inspection, AOI statistics, and granule downloads. No Earthdata login needed for search or display.",
       "author": "Qiusheng Wu",
       "homepage": "https://github.com/opengeos/geolibre-nasa-opera",
@@ -55,17 +55,6 @@
       "manifestUrl": "plugins/geolibre-hypercoast/plugin.json",
       "categories": ["Data", "Imagery"],
       "minGeoLibreVersion": "0.9.0"
-    },
-    {
-      "id": "maplibre-gl-vantor",
-      "name": "Vantor Open Data",
-      "version": "0.2.1",
-      "description": "Search, visualize, and download satellite imagery from the Vantor Open Data STAC catalog. Browse disaster event collections, filter by phase and map extent, view pre/post footprints, render Cloud-Optimized GeoTIFFs on the map, and download selected scenes.",
-      "author": "Qiusheng Wu",
-      "homepage": "https://github.com/opengeos/maplibre-gl-vantor",
-      "manifestUrl": "plugins/maplibre-gl-vantor/plugin.json",
-      "categories": ["Data", "Imagery"],
-      "minGeoLibreVersion": "1.8.0"
     },
     {
       "id": "geolibre-plugin-flowmaps",
@@ -118,6 +107,28 @@
       "manifestUrl": "plugins/geolibre-flood-gauges/plugin.json",
       "categories": ["Hydrology", "Data"],
       "minGeoLibreVersion": "2.0.0"
+    },
+    {
+      "id": "geolibre-contour",
+      "name": "Contour Lines from DEM",
+      "version": "0.3.7",
+      "description": "Generate dynamic contour lines from loaded Cloud-Optimized GeoTIFF elevation rasters.",
+      "author": "Cedric Bouffard",
+      "homepage": "https://github.com/cedricbouffard/geolibre-contour",
+      "manifestUrl": "plugins/geolibre-contour/plugin.json",
+      "categories": ["Raster", "Visualization"],
+      "minGeoLibreVersion": "0.9.0"
+    },
+    {
+      "id": "movecost",
+      "name": "movecost — least-cost analysis",
+      "version": "0.2.4",
+      "description": "Least-cost paths, corridors, networks, cost allocation, isochrones and ranked alternative paths on a DEM with the movecost R package (26 slope-dependent cost functions), running in the browser through webR or against a local R service. Download the DEM for a drawn area or upload a GeoTIFF.",
+      "author": "Enzo Cocca",
+      "homepage": "https://github.com/enzococca/geolibre-movecost",
+      "manifestUrl": "plugins/movecost/plugin.json",
+      "categories": ["Analysis", "Archaeology", "Terrain"],
+      "minGeoLibreVersion": "2.9.0"
     }
   ]
 }
