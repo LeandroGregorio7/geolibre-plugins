@@ -98,6 +98,8 @@
       "homepage": "https://github.com/LeandroGregorio7/lst-super-resolution",
       "manifestUrl": "plugins/lst-super-resolution/plugin.json",
       "minGeoLibreVersion": "1.0.0"
+    },
+    {
       "id": "geolibre-flood-gauges",
       "name": "US Live Flood Gauges",
       "version": "0.4.1",
