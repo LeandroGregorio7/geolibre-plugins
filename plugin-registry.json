@@ -37,7 +37,7 @@
     {
       "id": "geolibre-nasa-opera",
       "name": "NASA OPERA",
-      "version": "0.3.1",
+      "version": "0.4.0",
       "description": "Search, visualize, and analyze NASA OPERA products with GeoAgent-assisted CMR search, titiler-cmr raster display, change detection, time-series statistics, report export, pixel inspection, AOI statistics, and granule downloads. No Earthdata login needed for search or display.",
       "author": "Qiusheng Wu",
       "homepage": "https://github.com/opengeos/geolibre-nasa-opera",
@@ -122,6 +122,17 @@
       "minGeoLibreVersion": "2.0.0"
     },
     {
+      "id": "streamsnap",
+      "name": "StreamSnap",
+      "version": "0.1.1",
+      "description": "Match river monitoring sites to the correct stream segment interactively and snap sites onto the network.",
+      "author": "wangzcl@WEN-Research-Group",
+      "homepage": "https://github.com/WEN-Research-Group/StreamSnap",
+      "manifestUrl": "plugins/streamsnap/plugin.json",
+      "categories": ["Hydrology"],
+      "minGeoLibreVersion": "2.9.0"
+    },
+    {
       "id": "geolibre-contour",
       "name": "Contour Lines from DEM",
       "version": "0.3.7",
@@ -142,6 +153,28 @@
       "manifestUrl": "plugins/movecost/plugin.json",
       "categories": ["Analysis", "Archaeology", "Terrain"],
       "minGeoLibreVersion": "2.9.0"
+    },
+    {
+      "id": "geolibre-inaturalist-extractor",
+      "name": "iNaturalist Extractor",
+      "version": "1.5.0",
+      "description": "Fetch georeferenced iNaturalist observations by map view or layer extent, with species, date, observer, quality-grade and advanced (taxon ID, place ID, photo license, project, annotation) filters, and a photo popup.",
+      "author": "Defani Arman (Alfitriansyah)",
+      "homepage": "https://github.com/Defani/Geolibre-Inaturalist-Extraction-Plugins",
+      "manifestUrl": "plugins/geolibre-inaturalist-extractor/plugin.json",
+      "categories": ["Data"],
+      "minGeoLibreVersion": "3.0.0"
+    },
+    {
+      "id": "geoenergy-catalog",
+      "name": "Energy Data",
+      "version": "1.0.0",
+      "description": "A curated catalog of U.S. energy datasets: generation, transmission, data centers, fuels and reliability.",
+      "author": "Xinming Andy Zhang",
+      "homepage": "https://github.com/Andyzxm/geolibre-energy-plugin",
+      "manifestUrl": "plugins/geoenergy-catalog/plugin.json",
+      "categories": ["Data"],
+      "minGeoLibreVersion": "3.0.0"
     }
   ]
 }
