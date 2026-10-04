@@ -1,0 +1,15 @@
+{
+  "id": "lst-super-resolution",
+  "name": "LST Super-Resolution (SR2D4)",
+  "version": "1.0.3",
+  "description": "Generate Land Surface Temperature maps from SR2D4 three-band GeoTIFF images using Red, NIR, and SWIR bands, with interactive palettes, opacity controls, statistics, and PNG/GeoTIFF export.",
+  "author": "Leandro Gregorio",
+  "homepage": "https://github.com/LeandroGregorio7/lst-super-resolution",
+  "manifestUrl": "plugins/lst-super-resolution/plugin.json",
+  "source": {
+    "url": "https://github.com/LeandroGregorio7/lst-super-resolution/releases/download/v1.0.3/lst-super-resolution-1.0.3-release.zip",
+    "sha256": "1e4143873d405f1aedd2658daff3ab66f10e694eb88002968b11c153a87244f1"
+  },
+  "categories": ["Analysis", "Raster", "Imagery"],
+  "minGeoLibreVersion": "0.9.0"
+}
