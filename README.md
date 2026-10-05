@@ -46,6 +46,11 @@ from its own `registry/<id>.json` file, which holds just that entry:
   `Archaeology`, `Basemaps`, `Climate`, `Data`, `Ecology`, `Example`,
   `Hydrology`, `Imagery`, `Oceans`, `Raster`, `Terrain`, `Utilities`, `Vector`,
   `Visualization`. Open an issue to propose a new one.
+- For the catalog page only (GeoLibre ignores them): `repository` and `issues`
+  (HTTPS URLs), `license` (an SPDX identifier such as `MIT`), and up to four
+  `screenshots`, each `{ "path": "screenshots/main.png", "caption": "..." }`
+  naming a PNG, JPEG or WebP file of at most 1 MiB in the release zip. See
+  [Registry format](https://plugins.geolibre.app/registry/).
 
 [`schemas/registry-entry.schema.json`](schemas/registry-entry.schema.json) and
 [`schemas/plugin-manifest.schema.json`](schemas/plugin-manifest.schema.json)
@@ -79,6 +84,10 @@ Plugins are **trusted code** that runs with full app privileges, so the registry
 is curated: open a pull request and a maintainer reviews it before it ships.
 [`CODEOWNERS`](.github/CODEOWNERS) requests a maintainer's review on every pull
 request automatically.
+
+To report a malicious plugin or a vulnerability in the registry, see
+[`SECURITY.md`](SECURITY.md): report it privately, not in a public issue. For a
+plugin that is broken or misdescribed, use the **Report a plugin** issue form.
 
 > **Start from the template:** the
 > [geolibre-plugin-template](https://github.com/opengeos/geolibre-plugin-template)
@@ -131,23 +140,10 @@ menu; see [Develop a plugin](https://plugins.geolibre.app/develop/#where-your-pl
 Create `plugins/<id>/` containing `plugin.json`, the built `entry` JS, and any
 `style` CSS. Keep `entry`/`style` paths relative and inside the folder.
 
-Commit the bundle as your build emits it. The
-[Minify plugin bundles](.github/workflows/minify-bundles.yml) workflow
-whitespace-minifies every committed `plugins/**/*.js` — worth about 73% of the
-line count here, since most plugin builds mangle identifiers but leave the
-whitespace in. It only strips whitespace: no identifier mangling, no syntax
-rewriting, no tree shaking, and dependency license headers are kept.
-
-On a branch in this repository the workflow pushes the result back to your
-branch. From a fork it cannot (the Actions token has no write access to your
-fork), so it fails and you run it yourself — or download the `minified-bundles`
-artifact it uploads and commit that:
-
-```bash
-npm ci
-npm run minify        # rewrite the bundles in place
-npm run minify:check  # what CI checks
-```
+Commit the bundle as your build emits it; nothing reformats it. Build it
+minified, since every line of a committed bundle is part of the diff a
+reviewer has to page through. The same goes for a release zip's bundle: it is
+served exactly as built, so minifying it is what keeps downloads small.
 
 ### 3. Register it
 
@@ -243,8 +239,8 @@ launch count, and served at `plugins/stats.json`. A daily cron rolls finished
 weeks up into counts and deletes their hashes. See
 [`worker/src/stats.js`](worker/src/stats.js) and
 [Registry format](https://plugins.geolibre.app/registry/#usage-statistics) for
-what is and isn't kept. `npm run test:worker` runs the Worker's unit tests
-(D1 emulated with Node's SQLite), and PR CI runs them too.
+what is and isn't kept. The Worker's unit tests emulate D1 with Node's SQLite;
+see [Tests and monitoring](#tests-and-monitoring).
 
 > One-time setup (already done for plugins.geolibre.app): create the database
 > and set the salt secret. The deploy workflow below applies the schema.
@@ -264,6 +260,21 @@ the live site still serves every plugin. It needs the repository secret
 D1 Edit and Workers R2 Storage Read on the account, and Workers Routes Edit on
 the `geolibre.app` zone (alongside `CLOUDFLARE_ACCOUNT_ID`). To deploy by hand
 instead: `npx wrangler deploy --config worker/wrangler.toml`.
+
+### Tests and monitoring
+
+`npm test` runs the unit tests: the mirror Worker (`worker/test/`) and the
+scripts that download and unpack untrusted release zips (`scripts/test/`).
+They need no network; test zips are put in the download cache directly. PR CI
+runs them on every pull request (`npm run test:worker` and
+`npm run test:scripts` run one set).
+
+Every night the **Test Plugins** workflow also checks the live site:
+`scripts/check_deployed.mjs` re-hashes every published bundle against the
+registry, and `scripts/check_stats.mjs` checks that `plugins/stats.json` is
+current and that the daily roll-up has deleted the visitor hashes of finished
+weeks. GitHub emails a failed scheduled run to whoever last changed its
+schedule.
 
 ### Blocking a plugin
 
