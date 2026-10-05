@@ -10,10 +10,6 @@
     "url": "https://github.com/LeandroGregorio7/lst-super-resolution/releases/download/v1.0.9/lst-super-resolution-1.0.9-release.zip",
     "sha256": "cf8b3fe0ddcaa9794b5358622fe4108ac226b4181cc2d818e6c604b1599c67f0"
   },
-  "categories": [
-    "Analysis",
-    "Raster",
-    "Imagery"
-  ],
+  "categories": ["Analysis", "Raster", "Imagery"],
   "minGeoLibreVersion": "0.9.0"
 }
